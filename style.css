@@ -213,6 +213,10 @@ h1{
     canvas{
         width: 100%;
     }
+
+    .eye{
+        display: none;
+    }
     
     .mobile-icons{
         width: 45px;
@@ -252,6 +256,10 @@ h1{
 
     .start-btn{
         z-index: 41;
+    }
+    
+    .eye{
+        display: none;
     }
 
     h1{
