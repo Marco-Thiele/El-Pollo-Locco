@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El POLLO LOCO</title>
+    <link rel="icon" type="image/x-icon" href="img/3_enemies_chicken/chicken_small/1_walk/2_w.png">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="classes/drawable-objects.class.js"></script>
+    <script src="classes/movable-object.class.js"></script>
+    <script src="classes/throwable-object.class.js"></script>
+    <script src="classes/status-bar.class.js"></script>
+    <script src="classes/bottles-bar.class.js"></script>
+    <script src="classes/coins-bar.class.js"></script>
+    <script src="classes/endboss-bar.class.js"></script>
+    <script src="classes/character.class.js"></script>
+    <script src="classes/chicken.class.js"></script>
+    <script src="classes/chicken_small.class.js"></script>
+    <script src="classes/cloud.class.js"></script>
+    <script src="classes/world.class.js"></script>
+    <script src="classes/background-object.class.js"></script>
+    <script src="classes/coins.class.js"></script>
+    <script src="classes/bottles.class.js"></script>
+    <script src="classes/bottles-ground.class.js"></script>
+    <script src="classes/keyboard.class.js"></script>
+    <script src="classes/level.class.js"></script>
+    <script src="classes/endboss.class.js"></script>
+    <script src="levels.js/level1.js"></script>
+
+
+    <script src="js/game.js"></script>
+</head>
+
+<body>
+    <H1 translate="no">El pollo loco</H1>
+    <div id="fullscreen" class="background">
+        <!----><img class="overlay" id="startImg" src="img/9_intro_outro_screens/start/startscreen_1.png" alt="">
+        <img id="gameOver" class="end-overlay d-none" src="img/9_intro_outro_screens/game_over/game over!.png" alt="">
+        <div id="time" class="time d-none">
+            Aktuelle Zeit
+        </div>
+
+        <div id="info" class="info d-none">
+            <div class="info-position-contant">
+
+                <div class="info-position">
+                    <div>
+                        Arrow keys or <img class="info-mobile-icons" src="img/9_intro_outro_screens/start/left.ico"
+                            alt=""> <img class="info-mobile-icons" src="img/9_intro_outro_screens/start/right.ico"
+                            alt="">
+                    </div>
+                    <div>
+                        Space or <img class="info-mobile-icons" src="img/9_intro_outro_screens/start/top.ico" alt="">
+                    </div>
+                    <div>
+                        Press D or <img class="info-mobile-icons" src="img/9_intro_outro_screens/start/throw.ico"
+                            alt="">
+                    </div>
+                </div>
+
+                <div class="info-position">
+                    <div>
+                        Move left ore right
+                    </div>
+                    <div>
+                        Jump
+                    </div>
+                    <div>
+                        Throw bottle
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="info-contant">
+                You can defeat your enemies if you jump on it or hit them with a bottle, but remember use the
+                bottles cautious, you need a lot of them for the endboss!!!
+            </div>
+        </div>
+        <button id="startButton" class="start-btn" onclick="startGame()">Start</button>
+        <div class="postoin-icons">
+            <!--  <div>
+                <img style="cursor: pointer;" src="img/9_intro_outro_screens/start/fullscreen-12-32.ico" alt="">
+            </div>-->
+            <div class="position-right-icons">
+                <img style="cursor: pointer;" class="eye" onclick="showMobileBTN()" id="eye"
+                    src="img/9_intro_outro_screens/start/visible-32.ico">
+                <img style="cursor: pointer;" onclick="showInfo()" src="img/9_intro_outro_screens/start/info-2-32.ico">
+                <img style="cursor: pointer;" onclick="soundOff()" id="speaker"
+                    src="img/9_intro_outro_screens/start/speaker-32.ico">
+            </div>
+
+        </div>
+        <div id="mobileBTN" class="position-mobile">
+            <div class="position-mobile-left">
+                <img class="mobile-icons" id="left" src="img/9_intro_outro_screens/start/left.ico" alt="">
+                <img class="mobile-icons" id="right" src="img/9_intro_outro_screens/start/right.ico" alt="">
+            </div>
+            <div class="position-mobile-right">
+                <img class="mobile-icons" id="jump" src="img/9_intro_outro_screens/start/top.ico" alt="">
+                <img class="mobile-icons" id="throw" src="img/9_intro_outro_screens/start/throw.ico" alt="">
+            </div>
+        </div>
+        <canvas id="canvas" width="720" height="480">
+
+        </canvas>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('img/9_intro_outro_screens/start/desert-5396906_1920.jpg'); 
+    background-position: top, center;
+    margin: 0;
+    font-family: 'squirk', Arial, Helvetica, sans-serif
+}
+
+@font-face {
+    font-family: 'squirk';
+    src:  url('fonts/squirk-RMvV.ttf') format('truetype'); 
+}  
+
+canvas{
+    background-color: black;
+    position: relative;
+    display: block;
+}
+
+.background {
+    display: flex;
+    justify-content: center;
+    position: relative;
+   /* align-items: center;
+    flex-direction: column;*/
+}
+
+h1{
+    font-size: 50px;
+    letter-spacing: 3px;
+}
+
+.overlay{
+    height: 500px;
+    width: 734px;
+    position: absolute;
+    border-radius: 30px;
+    z-index: 1;
+    max-width: 118%;
+    max-height: 109%;
+    margin-top: -10px;
+}
+
+.end-overlay{
+    height: 500px;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.start-btn{
+    z-index: 12;
+    background-color: rgb(255,213,0);
+    /* margin-top: 47px; */
+    height: 60px;
+    width: 100px;
+    border-radius: 10px;
+    color: white;
+    border: unset;
+    padding: 20px;
+    font-size: 20px;
+    position: absolute;
+    top: 40px;
+    cursor: pointer;
+}
+
+.d-none{
+    display: none !important;
+}
+
+.position-right-icons img{
+    filter: invert(100%) sepia(0%) saturate(7448%) hue-rotate(288deg) brightness(104%) contrast(106%);
+}
+
+.postoin-icons{
+    z-index: 11;
+    position: absolute;
+    display: flex;
+    width: 720px;
+    max-width: 100%;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+
+.position-right-icons{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.info{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.info2{
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-radius: 30px;
+    height: 500px;
+    width: 734px;
+    margin-top: -10px;
+}
+
+.info-position{
+    display: flex;
+    color: white;
+    font-size: 26px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.info-position-contant{
+    display: flex;
+    height: 50%;
+    justify-content: space-evenly;
+    margin-top: -20px;;
+}
+
+.info-contant{
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.position-mobile{
+    position: absolute;
+    z-index: 10;
+    bottom: 0px;
+    max-width: 100%;
+    width: 720px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.position-mobile-left{
+    margin-left: 16px;
+  /*  margin-bottom: 16px;*/
+    gap: 10px;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.position-mobile-right{
+    margin-right: 16px;
+   /* margin-bottom: 16px;*/
+    gap: 10px;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mobile-icons{
+    width: 40px;
+    height: 40px;
+    filter: invert(100%) sepia(0%) saturate(7448%) hue-rotate(288deg) brightness(104%) contrast(106%);
+}
+
+.info-mobile-icons{
+    filter: invert(100%) sepia(0%) saturate(7448%) hue-rotate(288deg) brightness(104%) contrast(106%);
+    width: 22px;
+    height: 22px;
+}
+
+.time{
+    position: absolute;
+    bottom: 80px;
+    z-index: 1;
+    color: white;
+    font-size: 24px;
+}
+
+
+@media (max-width: 750px){
+    .overlay{
+        width: 100%;
+        height: 100%;
+        border-radius: unset;
+        margin-top: unset;
+    }
+
+    .eye{
+        display: none;
+    }
+
+    .time{
+        bottom: 13%;
+        z-index: 12;
+        font-size: 22px;
+    }
+}
+
+
+@media only screen and (max-width: 720px) {
+    canvas{
+        width: 100%;
+    }
+    
+    .mobile-icons{
+        width: 45px;
+        height: 45px;
+    }
+
+    .info-mobile-icons{
+        height: 14px;
+        width: 14px;
+    }
+
+    .info-position{
+        font-size: 14px;
+    }
+
+    .info-contant{
+        font-size: 14px;
+    }
+
+    h1{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-height: 480px) {
+    canvas{
+        height: 100vh;
+    }
+    .overlay{
+        width: 100%;
+        height: 100%;
+        border-radius: unset;
+        z-index: 40;
+        margin-top: unset;
+    }
+
+    .start-btn{
+        z-index: 41;
+    }
+
+    h1{
+        display: none;
+    }
+}
