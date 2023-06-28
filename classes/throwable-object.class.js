@@ -4,6 +4,7 @@ class TrowableObject extends MovebleObject {
     speedY = 25;
     speedX = 20;
     splash = false;
+    broken = new Audio('audio/broken.mp3')
 
 
     imagesThrow = [
@@ -81,10 +82,9 @@ class TrowableObject extends MovebleObject {
      */
     animate() {
         setStoppableInterval(() => {
-            if (this.splash) {
+            if (this.splash) 
                 this.playAnimation(this.imagesSplash, this.imagesSplash.length);
-            }
-        }, 200);
+        }, 20);
 
     }
 }

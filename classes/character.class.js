@@ -51,6 +51,29 @@ class Character extends MovebleObject {
         'img/2_character_pepe/4_hurt/H-43.png'
     ]
 
+    imagesIdle = [
+        'img/2_character_pepe/1_idle/idle/I-1.png',
+        'img/2_character_pepe/1_idle/idle/I-2.png',
+        'img/2_character_pepe/1_idle/idle/I-3.png',
+        'img/2_character_pepe/1_idle/idle/I-4.png',
+        'img/2_character_pepe/1_idle/idle/I-5.png',
+        'img/2_character_pepe/1_idle/idle/I-6.png',
+        'img/2_character_pepe/1_idle/idle/I-7.png',
+        'img/2_character_pepe/1_idle/idle/I-8.png',
+        'img/2_character_pepe/1_idle/idle/I-9.png',
+        'img/2_character_pepe/1_idle/idle/I-10.png',
+        'img/2_character_pepe/1_idle/long_idle/I-11.png',
+        'img/2_character_pepe/1_idle/long_idle/I-12.png',
+        'img/2_character_pepe/1_idle/long_idle/I-13.png',
+        'img/2_character_pepe/1_idle/long_idle/I-14.png',
+        'img/2_character_pepe/1_idle/long_idle/I-15.png',
+        'img/2_character_pepe/1_idle/long_idle/I-16.png',
+        'img/2_character_pepe/1_idle/long_idle/I-17.png',
+        'img/2_character_pepe/1_idle/long_idle/I-18.png',
+        'img/2_character_pepe/1_idle/long_idle/I-19.png',
+        'img/2_character_pepe/1_idle/long_idle/I-20.png'
+    ]
+
 
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
@@ -58,13 +81,14 @@ class Character extends MovebleObject {
         this.loadImages(this.imagesJumping);
         this.loadImages(this.imagesDead);
         this.loadImages(this.imagesHurt);
+        this.loadImages(this.imagesIdle);
         this.animate();
         this.applyGravity();
 
     }
 
 
-    
+
     /**
      * This function is for animation and moving
      * 
@@ -90,7 +114,7 @@ class Character extends MovebleObject {
             this.moveRight();
         if (this.canMoveLeft())
             this.moveLeft();
-        if (this.canjump()) 
+        if (this.canjump())
             this.jump();
         this.world.camera_x = -this.x + 100;
     }
@@ -167,17 +191,28 @@ class Character extends MovebleObject {
      * This function is used for playing the character animation
      * 
      */
-    playCharacter() {
+    async playCharacter() {
         if (this.hurt()) {
-            this.playAnimation(this.imagesHurt);
+          this.playAnimation(this.imagesHurt);
         } else if (this.isDead()) {
-            this.playAnimation(this.imagesDead);
+          this.playAnimation(this.imagesDead);
         } else if (this.isAboveGround()) {
-            this.playAnimation(this.imagesJumping);
-        } else {
-            if (this.world.keyboard.right || this.world.keyboard.left) {
-                this.playAnimation(this.imagesWalking);
-            }
+          this.playAnimation(this.imagesJumping);
+        } else if (this.world.keyboard.right || this.world.keyboard.left) {
+          this.playAnimation(this.imagesWalking);
+        } else if (await this.canIdle()) {
+          this.playAnimation(this.imagesIdle);
         }
-    }
+      }
+      
+
+
+    canIdle() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const shouldIdle = !this.world.keyboard.right && !this.world.keyboard.left && !this.isAboveGround();
+            resolve(shouldIdle);
+          }, 1000);
+        });
+      }
 }

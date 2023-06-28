@@ -135,6 +135,7 @@ class Endboss extends MovebleObject {
      */
     hitEndboss() {
         this.energy -= 15;
+        console.log('endboss energy', this.energy)
         if (this.energy < 0) {
             this.energy = 0;
         } else {

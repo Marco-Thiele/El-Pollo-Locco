@@ -17,6 +17,8 @@ class World {
     throwSound = new Audio('audio/throw.mp3');
     endbossHurtSound = new Audio('audio/endbossHurt.mp3')
     hurtSound = new Audio('audio/hurt.mp3');
+    takeBottleSound = new Audio('audio/takeBottle.mp3');
+    oneThrow = false;
 
 
     constructor(canvas, keyboard) {
@@ -27,7 +29,7 @@ class World {
         this.setWorld();
         this.run();
         this.backgroundSound.volume = 0.1;
-        this.backgroundSound.currentTime += 5;
+        this.backgroundSound.currentTime += 6;
         this.backgroundSound.play();
     }
 
@@ -150,6 +152,7 @@ class World {
                 this.checkCollisionsCoins();
                 this.throwObjects();
                 this.checkCollisionsEnemy();
+                this.bottleSplash();
             }
         }, 10);
     }
@@ -237,6 +240,8 @@ class World {
             if (this.character.isColliding(bottles)) {
                 this.statusBottle.calculatePercentage();
                 this.level.bottles.splice(index, 1);
+                if (!world.mute)
+                    this.takeBottleSound.play();
             }
         });
     }
@@ -266,11 +271,13 @@ class World {
     throwObjects() {
         if (this.canThrowObjects()) {
             let bottle = new TrowableObject(this.character.x + 100, this.character.y + 100);
-            this.throwableObjeckt.push(bottle);
-            this.checkThrowRight();
-            bottle.Throw();
-            this.updatePercantage(bottle);
-            this.bottleSplash();
+            if (!bottle.splash) {
+                this.throwableObjeckt.push(bottle);
+                this.checkThrowRight();
+                bottle.Throw();
+                this.updatePercantage(bottle);
+                this.oneThrow = true;
+            }
         }
     }
 
@@ -281,7 +288,7 @@ class World {
      * @returns true or false
      */
     canThrowObjects() {
-        return this.keyboard.d && this.throwableObjeckt.length < 1 && this.statusBottle.bottles > 0;
+        return this.keyboard.d && this.throwableObjeckt.length < 1 && this.statusBottle.bottles > 0 && !this.oneThrow;
     }
 
 
@@ -290,11 +297,10 @@ class World {
      * 
      */
     checkThrowRight() {
-        if (this.character.right) {
+        if (this.character.right)
             this.throwRight = true;
-        } else {
+        else
             this.throwRight = false;
-        }
     }
 
 
@@ -304,14 +310,12 @@ class World {
      * @param {string} bottle 
      */
     updatePercantage(bottle) {
-        oneThrow = true;
         this.statusBottle.bottles -= 10;
         this.statusBottle.setPercentage(this.statusBottle.bottles);
         this.objectsHit(bottle);
         this.objectsHitEndboss(bottle);
-        if (!world.mute) {
+        if (!world.mute)
             this.throwSound.play();
-        }
     }
 
 
@@ -320,15 +324,19 @@ class World {
      * 
      */
     bottleSplash() {
-        setStoppableInterval(() => {
-            this.throwableObjeckt.forEach((bottles) => {
-                if (bottles.splash == true) {
-                    setTimeout(() => {
-                        this.throwableObjeckt.splice(0, 1);
-                    }, 200);
-                }
-            })
-        }, 100);
+        this.throwableObjeckt.forEach((bottles) => {
+            if (bottles.splash == true) {
+                if (!world.mute)
+                    bottles.broken.play();
+                setTimeout(() => {
+                    const bottlesIndex = this.throwableObjeckt.indexOf(bottles)
+                    this.throwableObjeckt.splice(bottlesIndex, 1);
+                }, 50);
+                setTimeout(() => {
+                    this.oneThrow = false;
+                }, 200);
+            }
+        })
     }
 
 

@@ -5,7 +5,7 @@ class MovebleObject extends DrawableObjects {
     otherDirection = false;
     speedY = 0;
     acceleration = 2;
-    deadChicken = new Audio('audio/chicken.mp3')
+    deadChicken = new Audio('audio/chicken.mp3');
     lastHit = 0;
     offset = {
         top: 0,
@@ -167,8 +167,10 @@ class MovebleObject extends DrawableObjects {
      */
     enemyIsDead(enemy, enemies) {
         enemy.energy = 0;
-        if (!world.mute)
+        if (!world.mute){
+            this.deadChicken.volume = 0.5;
             this.deadChicken.play();
+        }
         setTimeout(() => {
             const enemyIndex = enemies.indexOf(enemy);
             enemies.splice(enemyIndex, 1);

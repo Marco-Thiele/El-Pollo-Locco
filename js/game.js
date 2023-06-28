@@ -2,7 +2,6 @@ let canvas;
 let ctx;
 let world;
 let keyboard = new Keyboard();
-let oneThrow = false;
 let clickCount = 0;
 let clickCountInfo = 0;
 let clickCountEye = 0;
@@ -130,7 +129,6 @@ window.addEventListener("keyup", (event) => {
     }
     if (event.keyCode == 68) {
         keyboard.d = false;
-        oneThrow = false;
     }
 })
 
