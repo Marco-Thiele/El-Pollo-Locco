@@ -38,6 +38,19 @@ function mobileBTN() {
     let elRight = document.getElementById('right');
     let elJump = document.getElementById('jump');
     let elThrow = document.getElementById('throw');
+    moveLeft(elLeft);
+    moveRight(elRight);
+    jump(elJump);
+    throwBottle(elThrow);
+}
+
+
+/**
+ * mobile version move left
+ * 
+ * @param {Objekt} elLeft 
+ */
+function moveLeft(elLeft) {
     elLeft.addEventListener("touchstart", (e) => {
         e.preventDefault();
         keyboard.left = true;
@@ -47,7 +60,14 @@ function mobileBTN() {
         e.preventDefault();
         keyboard.left = false;
     });
+}
 
+/**
+ * mobile version move right
+ * 
+ * @param {Objekt} elRight 
+ */
+function moveRight(elRight) {
     elRight.addEventListener("touchstart", (e) => {
         e.preventDefault();
         keyboard.right = true;
@@ -57,7 +77,14 @@ function mobileBTN() {
         e.preventDefault();
         keyboard.right = false;
     });
+}
 
+/**
+ * mobile version jump
+ * 
+ * @param {Objekt} elJump 
+ */
+function jump(elJump) {
     elJump.addEventListener("touchstart", (e) => {
         e.preventDefault();
         keyboard.space = true;
@@ -67,7 +94,14 @@ function mobileBTN() {
         e.preventDefault();
         keyboard.space = false;
     });
+}
 
+/**
+ * mobile version throw bottle
+ * 
+ * @param {Objekt} elThrow 
+ */
+function throwBottle(elThrow) {
     elThrow.addEventListener("touchstart", (e) => {
         e.preventDefault();
         keyboard.d = true;
@@ -78,6 +112,7 @@ function mobileBTN() {
         keyboard.d = false;
     });
 }
+
 
 
 /**
@@ -180,6 +215,12 @@ function resumeGame() {
  */
 function soundOff() {
     clickCount++;
+    if (clickCount == 2 || clickCount == 4 || clickCount == 6 || clickCount == 8 || clickCount == 10) {
+
+        document.getElementById('speaker').src = 'img/9_intro_outro_screens/start/speaker-32.ico';
+    }
+    if (clickCount == 1 || clickCount == 3 || clickCount == 5 || clickCount == 7 || clickCount == 9)
+        document.getElementById('speaker').src = 'img/9_intro_outro_screens/start/mute-2-32.ico';
 }
 
 
@@ -189,9 +230,9 @@ function soundOff() {
  */
 function checkSoundMuted() {
     setStoppableInterval(() => {
-        if (clickCount == 2)
+        if (clickCount == 2 || clickCount == 4 || clickCount == 6 || clickCount == 8 || clickCount == 10)
             CheckSpeakerOn();
-        if (clickCount == 1)
+        if (clickCount == 1 || clickCount == 3 || clickCount == 5 || clickCount == 7 || clickCount == 9)
             checkSpeakerOff()
     }, 100);
 }
@@ -202,8 +243,9 @@ function checkSoundMuted() {
  * 
  */
 function CheckSpeakerOn() {
+    world.backgroundSound.volume = 0.1;
+    world.backgroundSound.currentTime += 6;
     world.backgroundSound.play();
-    document.getElementById('speaker').src = 'img/9_intro_outro_screens/start/speaker-32.ico';
     clickCount = 0;
     world.mute = false;
 }
@@ -215,7 +257,7 @@ function CheckSpeakerOn() {
  */
 function checkSpeakerOff() {
     world.backgroundSound.pause()
-    document.getElementById('speaker').src = 'img/9_intro_outro_screens/start/mute-2-32.ico';
+
     world.mute = true;
 }
 
@@ -229,10 +271,10 @@ function showInfo() {
     if (clickCountInfo == 1) {
         if (!gameStarted)
             showInfoGameNotStarded();
-         else 
+        else
             showInfoGameStarded();
     }
-    if (clickCountInfo == 2) 
+    if (clickCountInfo == 2)
         continuePlay();
 }
 
@@ -272,24 +314,6 @@ function continuePlay() {
     resumeGame();
     if (!gameStarted)
         document.getElementById('startButton').classList.remove('d-none');
-}
-
-
-/**
- * This function unhide ore hide the mobile button
- * 
- */
-function showMobileBTN() {
-    clickCountEye++;
-    if (clickCountEye == 1) {
-        document.getElementById('eye').src = 'img/9_intro_outro_screens/start/invisible-32.ico';
-        document.getElementById('mobileBTN').classList.add('d-none');
-    }
-    if (clickCountEye == 2) {
-        document.getElementById('eye').src = 'img/9_intro_outro_screens/start/visible-32.ico';
-        document.getElementById('mobileBTN').classList.remove('d-none');
-        clickCountEye = 0;
-    }
 }
 
 
@@ -430,8 +454,52 @@ function showTime() {
                        Your current Time:  ${runTime} s <br>
                        Your Best Time:  ${bestTime} s `;
         }, 900);
-        
+
     }
 }
+
+
+/**
+ * Check the window width
+ * 
+ */
+function checkScreenWidth() {
+    let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    let screenHight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    if (screenWidth <= screenHight) {
+        document.getElementById('rotate').classList.remove('d-none');
+    } else {
+        document.getElementById('rotate').classList.add('d-none');
+    }
+}
+
+
+/**
+ * checkd the screen orientation
+ * 
+ */
+function checkScreenOrientation() {
+    if (window.orientation === 90 || window.orientation === -90) {
+        checkScreenWidth();
+    }
+}
+
+
+/**
+ * checked if its touch enabled
+ * 
+ */
+function checkIsMobile() {
+    if ('ontouchstart' in window) {
+        document.getElementById('mobileBTN').classList.remove('d-none')
+    } else {
+        document.getElementById('mobileBTN').classList.add('d-none')
+    }
+}
+
+
+window.addEventListener('load', checkScreenWidth);
+window.addEventListener('resize', checkScreenWidth);
+window.addEventListener('orientationchange', checkScreenOrientation);
 
 

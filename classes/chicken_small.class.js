@@ -2,6 +2,12 @@ class ChickenSmall extends MovebleObject{
     height = 60;
     width = 40;
     y = 360;
+    offset = {
+        top: 0,
+        left: 10,
+        right: 0,
+        bottom: 0,
+    }
     imagesWalking = [
         'img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
@@ -16,7 +22,7 @@ class ChickenSmall extends MovebleObject{
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/1_w.png')
         this.loadImages(this.imagesWalking);
         this.loadImages(this.imageDead);
-        this.x = 300 + Math.random() * 2000; //  immer eine Zahl Zwischen 200 und 700   Math.random() ist immer eine Zahl wischen  0 und 1
+        this.x = 400 + Math.random() * 2000; //  immer eine Zahl Zwischen 200 und 700   Math.random() ist immer eine Zahl wischen  0 und 1
         this.speed = 0.4 + Math.random() * 0.35;
         
         this.animate();

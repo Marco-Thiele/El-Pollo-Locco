@@ -68,20 +68,12 @@ class MovebleObject extends DrawableObjects {
      * @param {object} images images path
      * @param {number} maxIterations max iterations
      */
-    playAnimation(images, maxIterations) {
-        if (typeof maxIterations === 'undefined') 
-            maxIterations = Infinity;
-        if (!this.iterations) 
-            this.iterations = 0;
-        if (!this.maxIterations) 
-            this.maxIterations = null;
-        if (this.iterations <= maxIterations) {
+    playAnimation(images) {
             let i = this.currentImage % images.length;
             let path = images[i];
             this.img = this.imageCache[path];
             this.currentImage++;
             this.iterations++;
-        }
     }
 
 
@@ -101,10 +93,6 @@ class MovebleObject extends DrawableObjects {
      * @returns true or false
      */
     isColliding(obj) {
-        // return (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) &&
-        //   (this.y + this.offsetY + this.height) >= obj.y &&
-        //   (this.y + this.offsetY) <= (obj.y + obj.height) //&& c
-        //  obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
         return this.x + this.width - this.offset.right > obj.x + obj.offset.left &&
             this.y + this.height - this.offset.bottom > obj.y + obj.offset.top &&
             this.x + this.offset.left < obj.x + obj.width - obj.offset.right &&
@@ -117,7 +105,7 @@ class MovebleObject extends DrawableObjects {
      * 
      */
     hit() {
-        this.energy -= 2;
+        this.energy -= 1;
         if (this.energy < 0) {
             this.energy = 0;
         } else {

@@ -34,10 +34,10 @@
     <script src="js/game.js"></script>
 </head>
 
-<body>
+<body onload="checkIsMobile()">
     <H1 translate="no">El pollo loco</H1>
     <div id="fullscreen" class="background">
-        <!----><img class="overlay" id="startImg" src="img/9_intro_outro_screens/start/startscreen_1.png" alt="">
+        <img class="overlay" id="startImg" src="img/9_intro_outro_screens/start/startscreen_1.png" alt="">
         <img id="gameOver" class="end-overlay d-none" src="img/9_intro_outro_screens/game_over/game over!.png" alt="">
         <div id="time" class="time d-none">
             Aktuelle Zeit
@@ -84,14 +84,12 @@
                 bottles cautious, you need a lot of them for the endboss!!!
             </div>
         </div>
+        <div id="rotate" class="rotate d-none">
+            Please rotate your Phone!
+        </div>
         <button id="startButton" class="start-btn" onclick="startGame()">Start</button>
         <div class="postoin-icons">
-            <!--  <div>
-                <img style="cursor: pointer;" src="img/9_intro_outro_screens/start/fullscreen-12-32.ico" alt="">
-            </div>-->
             <div class="position-right-icons">
-                <img style="cursor: pointer;" class="eye" onclick="showMobileBTN()" id="eye"
-                    src="img/9_intro_outro_screens/start/visible-32.ico">
                 <img style="cursor: pointer;" onclick="showInfo()" src="img/9_intro_outro_screens/start/info-2-32.ico">
                 <img style="cursor: pointer;" onclick="soundOff()" id="speaker"
                     src="img/9_intro_outro_screens/start/speaker-32.ico">

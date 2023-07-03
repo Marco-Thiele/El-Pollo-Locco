@@ -88,7 +88,6 @@ class Character extends MovebleObject {
     }
 
 
-
     /**
      * This function is for animation and moving
      * 
@@ -100,7 +99,7 @@ class Character extends MovebleObject {
 
         setStoppableInterval(() => {
             this.playCharacter();
-        }, 60);
+        }, 120);
     }
 
 
@@ -206,7 +205,11 @@ class Character extends MovebleObject {
       }
       
 
-
+      /**
+       * This is for the idle animation
+       * 
+       * @returns 
+       */
     canIdle() {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
