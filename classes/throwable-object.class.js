@@ -25,6 +25,7 @@ class TrowableObject extends MovebleObject {
     constructor(x, y) {
         super().loadImage('img/6_salsa_bottle/salsa_bottle.png');
         this.loadImages(this.imagesSplash);
+        this.loadImages(this.imagesThrow);
         this.x = x;
         this.y = y;
         this.originalY = y;
@@ -77,7 +78,7 @@ class TrowableObject extends MovebleObject {
 
 
     /**
-     * This funktion is for the splash animation
+     * This funktion is for the bottles animation
      * 
      */
     animate() {
@@ -85,6 +86,8 @@ class TrowableObject extends MovebleObject {
             if (this.splash) 
                 this.playAnimation(this.imagesSplash, this.imagesSplash.length);
         }, 20);
-
+        setStoppableInterval(()=> {
+            this.playAnimation(this.imagesThrow);
+        },80);
     }
 }

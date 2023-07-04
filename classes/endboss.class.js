@@ -61,7 +61,7 @@ class Endboss extends MovebleObject {
         this.loadImages(this.imageAttack);
         this.loadImages(this.imageHurt);
         this.loadImages(this.imageDead);
-        this.x = 2700;
+        this.x = 2400;
         this.animate();
 
     }
@@ -86,7 +86,7 @@ class Endboss extends MovebleObject {
                 this.playAnimation(this.imageWalking);
             }
             i++;
-            if (world.character.x >= 2200 && !this.firstcontact) {
+            if (world.character.x >= 1900 && !this.firstcontact) {
                 i = 0;
                 this.firstcontact = true;
             }
@@ -117,7 +117,7 @@ class Endboss extends MovebleObject {
         if (this.canMoveLeft(i)) {
             super.moveLeft();
             if (this.hurt()) {
-                this.speed = 2;
+                this.speed = 1.5;
                 setTimeout(() => {
                     this.speed = 4;
                 }, 700);

@@ -1,9 +1,9 @@
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url('img/9_intro_outro_screens/start/desert-5396906_1920.jpg'); 
+    background-image: url('img/9_intro_outro_screens/start/desert-5396906_1920.jpg');
     background-position: top, center;
     margin: 0;
     font-family: 'squirk', Arial, Helvetica, sans-serif
@@ -11,10 +11,10 @@ body{
 
 @font-face {
     font-family: 'squirk';
-    src:  url('fonts/squirk-RMvV.ttf') format('truetype'); 
-}  
+    src: url('fonts/squirk-RMvV.ttf') format('truetype');
+}
 
-canvas{
+canvas {
     background-color: black;
     position: relative;
     display: block;
@@ -24,16 +24,16 @@ canvas{
     display: flex;
     justify-content: center;
     position: relative;
-   /* align-items: center;
+    /* align-items: center;
     flex-direction: column;*/
 }
 
-h1{
+h1 {
     font-size: 50px;
     letter-spacing: 3px;
 }
 
-.overlay{
+.overlay {
     height: 500px;
     width: 734px;
     position: absolute;
@@ -44,7 +44,7 @@ h1{
     margin-top: -10px;
 }
 
-.end-overlay{
+.end-overlay {
     height: 500px;
     position: absolute;
     z-index: 1;
@@ -52,9 +52,9 @@ h1{
     width: 100%;
 }
 
-.start-btn{
+.start-btn {
     z-index: 12;
-    background-color: rgb(255,213,0);
+    background-color: rgb(243, 202, 0);
     /* margin-top: 47px; */
     height: 60px;
     width: 100px;
@@ -68,15 +68,28 @@ h1{
     cursor: pointer;
 }
 
-.d-none{
+.start-btn:hover {
+    background-color: rgb(255, 222, 60);
+    height: 70px;
+    width: 110px;
+    margin-top: -5px;
+}
+
+.d-none {
     display: none !important;
 }
 
-.position-right-icons img{
+.position-right-icons img {
     filter: invert(100%) sepia(0%) saturate(7448%) hue-rotate(288deg) brightness(104%) contrast(106%);
+    height: 32px;
 }
 
-.postoin-icons{
+.position-right-icons img:hover {
+   height: 40px;
+   margin-top: -4px;
+}
+
+.postoin-icons {
     z-index: 11;
     position: absolute;
     display: flex;
@@ -86,27 +99,27 @@ h1{
     justify-content: flex-end;
 }
 
-.position-right-icons{
+.position-right-icons {
     display: flex;
     justify-content: space-around;
     width: 30%;
 }
 
-.info{
+.info {
     height: 100%;
     width: 100%;
     position: absolute;
     z-index: 10;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-.info2{
+.info2 {
     position: absolute;
     z-index: 10;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -116,7 +129,7 @@ h1{
     margin-top: -10px;
 }
 
-.info-position{
+.info-position {
     display: flex;
     color: white;
     font-size: 26px;
@@ -125,14 +138,15 @@ h1{
     justify-content: flex-end;
 }
 
-.info-position-contant{
+.info-position-contant {
     display: flex;
     height: 50%;
     justify-content: space-evenly;
-    margin-top: -20px;;
+    margin-top: -20px;
+    ;
 }
 
-.info-contant{
+.info-contant {
     color: white;
     font-size: 26px;
     text-align: center;
@@ -141,7 +155,7 @@ h1{
     margin-right: 20px;
 }
 
-.position-mobile{
+.position-mobile {
     position: absolute;
     z-index: 10;
     bottom: 0px;
@@ -152,37 +166,37 @@ h1{
     justify-content: space-between;
 }
 
-.position-mobile-left{
+.position-mobile-left {
     margin-left: 16px;
-  /*  margin-bottom: 16px;*/
+    /*  margin-bottom: 16px;*/
     gap: 10px;
     width: 100px;
     display: flex;
     justify-content: space-between;
 }
 
-.position-mobile-right{
+.position-mobile-right {
     margin-right: 16px;
-   /* margin-bottom: 16px;*/
+    /* margin-bottom: 16px;*/
     gap: 10px;
     width: 100px;
     display: flex;
     justify-content: space-between;
 }
 
-.mobile-icons{
+.mobile-icons {
     width: 40px;
     height: 40px;
     filter: invert(100%) sepia(0%) saturate(7448%) hue-rotate(288deg) brightness(104%) contrast(106%);
 }
 
-.info-mobile-icons{
+.info-mobile-icons {
     filter: invert(100%) sepia(0%) saturate(7448%) hue-rotate(288deg) brightness(104%) contrast(106%);
     width: 22px;
     height: 22px;
 }
 
-.time{
+.time {
     position: absolute;
     bottom: 80px;
     z-index: 1;
@@ -190,81 +204,85 @@ h1{
     font-size: 24px;
 }
 
-.rotate{
-    position: absolute;
-    color: darkred;
+.rotate {
+    color: white;
     z-index: 20;
-    top: 53%;
     font-size: 22px;
 }
 
-
-
-@media (max-width: 750px){
-    .overlay{
+@media (max-width: 750px) {
+    .overlay {
         width: 100%;
         height: 100%;
         border-radius: unset;
         margin-top: unset;
     }
 
-    .info2{
+    .info2 {
         width: 100%;
         height: 100%;
         border-radius: unset;
         margin-top: unset;
     }
 
-    .eye{
+    .eye {
         display: none;
     }
 
-    .time{
+    .time {
         bottom: 13%;
         z-index: 12;
         font-size: 22px;
     }
 }
 
-
 @media only screen and (max-width: 720px) {
-    canvas{
+    canvas {
         width: 100%;
     }
 
-    .eye{
+    .eye {
         display: none;
     }
-    
-    .mobile-icons{
+
+    .mobile-icons {
         width: 45px;
         height: 45px;
     }
 
-    .info-mobile-icons{
+    .info-mobile-icons {
         height: 14px;
         width: 14px;
     }
 
-    .info-position{
+    .info-position {
         font-size: 14px;
     }
 
-    .info-contant{
+    .info-contant {
         font-size: 14px;
     }
 
-    h1{
+    h1 {
         display: none;
+    }
+
+    .position-rotate{
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;  
     }
 }
 
-
 @media only screen and (max-height: 480px) {
-    canvas{
+    canvas {
         height: 100vh;
     }
-    .overlay{
+
+    .overlay {
         width: 100%;
         height: 100%;
         border-radius: unset;
@@ -272,15 +290,24 @@ h1{
         margin-top: unset;
     }
 
-    .start-btn{
+    .start-btn {
         z-index: 41;
     }
-    
-    .eye{
+
+    .eye {
         display: none;
     }
 
-    h1{
+    h1 {
         display: none;
+    }
+
+    .position-rotate{
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
     }
 }

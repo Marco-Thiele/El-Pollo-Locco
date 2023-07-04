@@ -174,6 +174,7 @@ window.addEventListener("keyup", (event) => {
  */
 function startGame() {
     document.getElementById('startButton').classList.add('d-none');
+    document.getElementById('reStartButton').classList.add('d-none');
     document.getElementById('startImg').classList.add('d-none');
     document.getElementById('gameOver').classList.add('d-none');
     document.getElementById('time').classList.add('d-none');
@@ -345,7 +346,7 @@ function stopGame() {
 function stopGameClearIntervall() {
     world.clearAllIntervals();
     document.getElementById('gameOver').classList.remove('d-none');
-    document.getElementById('startButton').classList.remove('d-none');
+    document.getElementById('reStartButton').classList.remove('d-none');
     world.backgroundSound.pause();
     world.character.walking_sound.pause();
 }
@@ -422,7 +423,7 @@ function setTime() {
  * 
  */
 function saveTime() {
-    if (runTime < bestTime && world.level.endboss[0].isDead()) {
+    if (runTime <= bestTime && world.level.endboss[0].isDead()) {
         let runtimeAsText = JSON.stringify(runTime);
         localStorage.setItem('Time', runtimeAsText);
     }
@@ -466,7 +467,7 @@ function showTime() {
 function checkScreenWidth() {
     let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     let screenHight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    if (screenWidth <= screenHight) {
+    if (screenWidth <= 720 && screenWidth <= screenHight) {
         document.getElementById('rotate').classList.remove('d-none');
     } else {
         document.getElementById('rotate').classList.add('d-none');

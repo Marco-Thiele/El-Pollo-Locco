@@ -215,7 +215,7 @@ class Character extends MovebleObject {
           setTimeout(() => {
             const shouldIdle = !this.world.keyboard.right && !this.world.keyboard.left && !this.isAboveGround();
             resolve(shouldIdle);
-          }, 1000);
+          }, 0);
         });
       }
 }

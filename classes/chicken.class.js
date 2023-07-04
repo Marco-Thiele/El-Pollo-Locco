@@ -4,7 +4,7 @@ class Chicken extends MovebleObject {
     y = 340;
     offset = {
         top: 0,
-        left: 10,
+        left: 20,
         right: 0,
         bottom: 0,
     }
@@ -34,6 +34,7 @@ class Chicken extends MovebleObject {
      */
     animate() {
         setStoppableInterval(() => {
+            if(!this.isDead())
             this.moveLeft();
         }, 1000 / 60)
         setStoppableInterval(() => {
